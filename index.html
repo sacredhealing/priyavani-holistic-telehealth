@@ -890,8 +890,8 @@
       <a href="#circle" data-i18n="nav.circle">Coaching</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
       <div class="lang" role="group" aria-label="Sprache / Language">
-        <button class="lang-btn active" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn active" data-lang="de" onclick="window.setLang('de')">DE</button>
+        <button class="lang-btn" data-lang="en" onclick="window.setLang('en')">EN</button>
       </div>
     </nav>
     <button class="burger" id="burger" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -1591,7 +1591,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  window.setLang = function(lang) {
+// setLang must be global
+window.setLang = function(lang) {
     if (!I18N[lang]) lang = 'de';
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
