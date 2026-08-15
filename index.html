@@ -896,10 +896,10 @@
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
     </nav>
-    <div style="display:flex;gap:4px;margin-right:8px">
-        <button onclick="setLang('de')" id="m-btn-de" style="border:0;background:var(--sage-deep);color:var(--cream);cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:.06em">DE</button>
-        <button onclick="setLang('en')" id="m-btn-en" style="border:0;background:rgba(42,41,37,.08);color:var(--ink);cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:.06em">EN</button>
-      </div>
+    <div class="lang" role="group" aria-label="Sprache / Language" style="margin-right:8px">
+      <button class="lang-btn active" id="m-btn-de" data-lang="de" onclick="window.setLang('de')">DE</button>
+      <button class="lang-btn" id="m-btn-en" data-lang="en" onclick="window.setLang('en')">EN</button>
+    </div>
     <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </header>
