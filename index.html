@@ -133,8 +133,8 @@
   .lang-btn:hover{color:var(--ink)}
   .lang-btn.active{background:var(--sage-deep);color:var(--cream)}
   .burger{display:none;background:none;border:0;cursor:pointer;width:30px;height:24px;position:relative;z-index:101}
-  .lang-mobile{display:none}
-  @media(max-width:980px){.lang-mobile{display:flex}}
+  .lang-always{display:flex}
+  @media(min-width:981px){.lang-always{display:none}}
   .burger span{position:absolute;left:0;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:.3s}
   .burger span:nth-child(1){top:2px}
   .burger span:nth-child(2){top:11px}
@@ -557,6 +557,7 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:980px){
+    .burger{display:block}
     .hero-grid,.about-grid,.circle-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
     .hero{padding-top:120px;min-height:auto}
     .hero-text{order:2}
@@ -896,6 +897,10 @@
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
     </nav>
+    <div class="lang lang-always" role="group" style="margin-right:6px">
+      <button class="lang-btn active" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </header>
