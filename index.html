@@ -1539,8 +1539,12 @@
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px 0px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Fallback: show all after 1s in case IntersectionObserver fails
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }, 800);
 
   // ============== I18N (DE / EN) ==============
   const I18N = {
