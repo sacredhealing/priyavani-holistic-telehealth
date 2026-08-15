@@ -602,6 +602,23 @@
   .t-detail{font-size:.78rem;color:rgba(250,246,239,.58);margin-top:3px}
   .t-tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.12);color:rgba(250,246,239,.8);padding:.3rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
   @media(max-width:980px){.t-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+
+  /* Fixed floating language bar */
+  .lang-bar{
+    position:fixed;bottom:20px;right:20px;z-index:999;
+    display:flex;gap:4px;
+    background:var(--cream);border-radius:999px;
+    padding:6px;box-shadow:0 4px 20px rgba(0,0,0,.2);
+    border:1px solid var(--line);
+  }
+  .lang-bar button{
+    border:0;background:transparent;cursor:pointer;
+    font-family:inherit;font-size:.85rem;font-weight:700;
+    letter-spacing:.06em;color:var(--muted);
+    padding:8px 16px;border-radius:999px;transition:.25s;
+  }
+  .lang-bar button.active{background:var(--sage-deep);color:var(--cream)}
+  .lang-bar button:hover{color:var(--ink)}
 </style>
 
 <!-- ============== STRUCTURED DATA (JSON-LD / Schema.org) ============== -->
@@ -1623,6 +1640,13 @@
     });
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     try{ localStorage.setItem('ht_lang', lang); }catch(e){}
+    // Update floating bar
+    const btnDe = document.getElementById('btn-de');
+    const btnEn = document.getElementById('btn-en');
+    if(btnDe && btnEn){
+      btnDe.classList.toggle('active', lang==='de');
+      btnEn.classList.toggle('active', lang==='en');
+    }
   }
   // Event delegation for language buttons - works for dynamically added buttons too
   document.addEventListener('click', function(e) {
@@ -1657,5 +1681,10 @@
   addEventListener('keydown', e => { if(e.key === 'Escape') closeModals(); });
 </script>
 
+
+<div class="lang-bar" id="langBar">
+  <button onclick="setLang('de')" id="btn-de" class="active">DE</button>
+  <button onclick="setLang('en')" id="btn-en">EN</button>
+</div>
 </body>
 </html>
