@@ -1506,31 +1506,8 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Header scroll
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.classList.toggle('scrolled', window.scrollY > 30);
-  }, {passive:true});
-
-  // Burger menu
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      burger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
-
-  // ============== I18N ==============
-  const I18N = {
+// I18N and setLang defined immediately - available to onclick handlers
+const I18N = {
     de: {
       "nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
       "hero.eyebrow":"Ganzheitliche Online-Begleitung","hero.tagline":"Du bist es dir wert.","hero.lead":"Ganzheitliche Begleitung vor, während und nach deiner Operation — online, fortschrittlich und sicher im eigenen Zuhause. Schulmedizin und ganzheitliche Medizin ergänzen sich für dein bestes Ergebnis.","hero.cta1":"Kostenloses Kennenlerngespräch","hero.cta2":"Pakete entdecken","hero.badge1":"100 % online","hero.badge2":"Per Zoom oder Telefon","scroll.hint":"Scroll",
@@ -1591,55 +1568,60 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-// setLang must be global
 window.setLang = function(lang) {
-    if (!I18N[lang]) lang = 'de';
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const v = I18N[lang][el.getAttribute('data-i18n')];
-      if (v != null) el.innerHTML = v;
-    });
-    document.querySelectorAll('.lang-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.lang === lang);
-    });
-    try { localStorage.setItem('ht_lang', lang); } catch(e) {}
-  };
-
-  // Attach lang buttons
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.addEventListener('click', () => window.setLang(b.dataset.lang));
+  if (!I18N[lang]) lang = 'de';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var v = I18N[lang][el.getAttribute('data-i18n')];
+    if (v != null) el.innerHTML = v;
   });
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  try { localStorage.setItem('ht_lang', lang); } catch(e) {}
+};
+
+// Everything else on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function() {
+    hdr.classList.toggle('scrolled', window.scrollY > 30);
+  }, {passive:true});
 
   // Init language
-  (function() {
-    let saved;
-    try { saved = localStorage.getItem('ht_lang'); } catch(e) {}
-    const nav = (navigator.language || 'de').slice(0, 2);
-    window.setLang(saved || (I18N[nav] ? nav : 'de'));
-  })();
+  var saved;
+  try { saved = localStorage.getItem('ht_lang'); } catch(e) {}
+  var nav = (navigator.language || 'de').slice(0, 2);
+  window.setLang(saved || (I18N[nav] ? nav : 'de'));
 
   // Modals
-  function openModal(id) {
-    const m = document.getElementById('modal-' + id);
-    if (!m) return;
-    m.classList.add('open');
-    m.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModals() {
-    document.querySelectorAll('.modal.open').forEach(m => {
-      m.classList.remove('open');
-      m.setAttribute('aria-hidden', 'true');
+  document.querySelectorAll('[data-modal]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var m = document.getElementById('modal-' + el.dataset.modal);
+      if (!m) return;
+      m.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
-    document.body.style.overflow = '';
-  }
-  document.querySelectorAll('[data-modal]').forEach(el => {
-    el.addEventListener('click', e => { e.preventDefault(); openModal(el.dataset.modal); });
   });
-  document.querySelectorAll('[data-close]').forEach(el => {
-    el.addEventListener('click', closeModals);
+  document.querySelectorAll('[data-close]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      document.querySelectorAll('.modal.open').forEach(function(m) {
+        m.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    });
   });
-  addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal.open').forEach(function(m) {
+        m.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    }
+  });
 });
 </script>
 
