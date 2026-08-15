@@ -874,6 +874,7 @@
 </script>
 </head>
 <body>
+<div id="js-test" style="position:fixed;top:0;left:0;right:0;background:red;color:white;text-align:center;padding:8px;z-index:9999;font-size:14px">JS NOT LOADED</div>
 
 <!-- ========== HEADER ========== -->
 <header id="hdr">
@@ -1585,6 +1586,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Year
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
+  var test = document.getElementById('js-test');
+  if (test) { test.style.background = 'green'; test.textContent = 'JS LOADED - tap EN to test'; }
 
   // Scroll header
   var hdr = document.getElementById('hdr');
