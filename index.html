@@ -890,8 +890,8 @@
       <a href="#circle" data-i18n="nav.circle">Coaching</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
       <div class="lang" role="group" aria-label="Sprache / Language">
-        <button class="lang-btn active" data-lang="de" onclick="window.setLang('de')">DE</button>
-        <button class="lang-btn" data-lang="en" onclick="window.setLang('en')">EN</button>
+        <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
     </nav>
     <button class="burger" id="burger" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -1506,7 +1506,6 @@
 </div>
 
 <script>
-// I18N and setLang defined immediately - available to onclick handlers
 const I18N = {
     de: {
       "nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
@@ -1568,60 +1567,53 @@ const I18N = {
     }
   };
 
-window.setLang = function(lang) {
+function setLang(lang) {
   if (!I18N[lang]) lang = 'de';
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    var v = I18N[lang][el.getAttribute('data-i18n')];
-    if (v != null) el.innerHTML = v;
+    var key = el.getAttribute('data-i18n');
+    var val = I18N[lang][key];
+    if (val !== undefined) el.innerHTML = val;
   });
   document.querySelectorAll('.lang-btn').forEach(function(b) {
     b.classList.toggle('active', b.dataset.lang === lang);
   });
   try { localStorage.setItem('ht_lang', lang); } catch(e) {}
-};
+}
 
-// Everything else on DOM ready
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Year
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
 
+  // Scroll header
   var hdr = document.getElementById('hdr');
   window.addEventListener('scroll', function() {
-    hdr.classList.toggle('scrolled', window.scrollY > 30);
-  }, {passive:true});
+    if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 30);
+  }, {passive: true});
 
   // Init language
-  var saved;
-  try { saved = localStorage.getItem('ht_lang'); } catch(e) {}
-  var nav = (navigator.language || 'de').slice(0, 2);
-  window.setLang(saved || (I18N[nav] ? nav : 'de'));
+  var saved = '';
+  try { saved = localStorage.getItem('ht_lang') || ''; } catch(e) {}
+  var navLang = (navigator.language || 'de').slice(0, 2);
+  setLang(saved || (I18N[navLang] ? navLang : 'de'));
 
   // Modals
   document.querySelectorAll('[data-modal]').forEach(function(el) {
     el.addEventListener('click', function(e) {
       e.preventDefault();
       var m = document.getElementById('modal-' + el.dataset.modal);
-      if (!m) return;
-      m.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
     });
   });
+  function closeModals() {
+    document.querySelectorAll('.modal.open').forEach(function(m) { m.classList.remove('open'); });
+    document.body.style.overflow = '';
+  }
   document.querySelectorAll('[data-close]').forEach(function(el) {
-    el.addEventListener('click', function() {
-      document.querySelectorAll('.modal.open').forEach(function(m) {
-        m.classList.remove('open');
-      });
-      document.body.style.overflow = '';
-    });
+    el.addEventListener('click', closeModals);
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal.open').forEach(function(m) {
-        m.classList.remove('open');
-      });
-      document.body.style.overflow = '';
-    }
-  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModals(); });
 });
 </script>
 
