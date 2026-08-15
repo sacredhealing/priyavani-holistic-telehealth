@@ -1624,7 +1624,11 @@
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     try{ localStorage.setItem('ht_lang', lang); }catch(e){}
   }
-  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  // Event delegation for language buttons - works for dynamically added buttons too
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.lang-btn');
+    if (btn && btn.dataset.lang) setLang(btn.dataset.lang);
+  });
   (function(){
     let saved; try{ saved = localStorage.getItem('ht_lang'); }catch(e){}
     const nav = (navigator.language || 'de').slice(0,2);
