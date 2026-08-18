@@ -627,6 +627,22 @@
   /* ---------- CIRCLE BRIDGE ---------- */
   .circle-bridge{text-align:center;padding:24px 0 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--sage-deep)}
   .circle-bridge::before{content:'';display:block;width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--sage-deep));margin:0 auto 16px}
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{position:fixed;bottom:24px;right:24px;z-index:500;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:transform .25s,box-shadow .25s;text-decoration:none}
+  .wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:var(--sage-deep);padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+  .sticky-cta a{display:block;text-align:center;color:#fff;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:.02em}
+  @media(max-width:980px){.sticky-cta{display:block}}
+  /* ---------- TRUST BADGES ---------- */
+  .trust{background:var(--sage-deep);padding:18px 0}
+  .trust-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:10px;color:rgba(250,246,239,.85);font-size:.82rem;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+  .trust-item svg{opacity:.7;flex-shrink:0}
+  .trust-sep{width:1px;height:24px;background:rgba(250,246,239,.2)}
+  @media(max-width:600px){.trust-sep{display:none}.trust-inner{gap:20px}}
 </style>
 
 <!-- ============== STRUCTURED DATA (JSON-LD / Schema.org) ============== -->
@@ -925,6 +941,37 @@
     <button class="burger" id="burger" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+
+<!-- Trust Badges -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3Z"/></svg>
+      <span data-i18n="trust.1">15+ Jahre Erfahrung</span>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <span data-i18n="trust.2">Klassische Hom&ouml;opathin</span>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a8 8 0 0 1 8 8"/></svg>
+      <span data-i18n="trust.3">100% Online &amp; Weltweit</span>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4V8Z"/></svg>
+      <span data-i18n="trust.4">Zoom &amp; Telefon</span>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"/></svg>
+      <span data-i18n="trust.5">Yoga &amp; Meditationslehrerin</span>
+    </div>
+  </div>
+</div>
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
@@ -1597,7 +1644,7 @@
 <script>
 const I18N = {
     de: {
-      "nav.faq":"FAQ","resonant.desc":"Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen in koh&auml;renter Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.","faq.eyebrow":"H&auml;ufige Fragen","faq.title":"Deine Fragen beantwortet.","faq.sub":"Alles was du wissen m&ouml;chtest, bevor wir starten.","faq.q1":"Wie fr&uuml;hzeitig sollte ich buchen?","faq.a1":"Optimal 2 Wochen vor mittleren Operationen und 3 Wochen vor gro&szlig;en Eingriffen. Kurzfristige Buchungen sind nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.","faq.q2":"Was passiert, wenn meine OP verschoben wird?","faq.a2":"Kein Problem. Die Begleitung ist flexibel und anpassbar. Wir bleiben auf Kurs, auch in chaotischen Situationen.","faq.q3":"Funktioniert das auch im Ausland?","faq.a3":"Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.","faq.q4":"Wird das von der Krankenkasse &uuml;bernommen?","faq.a4":"Die Begleitung ist eine Privatleistung. Manche Zusatzversicherungen k&ouml;nnen Leistungen anteilig erstatten.","faq.q5":"Was ist Resonant Tuning?","faq.a5":"Durch Summen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es schafft Ruhe, Klarheit und Erdung.","faq.q6":"Ersetzt die Begleitung meinen Arzt?","faq.a6":"Nein. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt aber keine &auml;rztliche Diagnose.","urgency.text":"Idealerweise 2–3 Wochen vor der OP buchen — begrenzte Plätze verfügbar","nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
+      "nav.faq":"FAQ","resonant.desc":"Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen in koh&auml;renter Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.","faq.eyebrow":"H&auml;ufige Fragen","faq.title":"Deine Fragen beantwortet.","faq.sub":"Alles was du wissen m&ouml;chtest, bevor wir starten.","faq.q1":"Wie fr&uuml;hzeitig sollte ich buchen?","faq.a1":"Optimal 2 Wochen vor mittleren Operationen und 3 Wochen vor gro&szlig;en Eingriffen. Kurzfristige Buchungen sind nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.","faq.q2":"Was passiert, wenn meine OP verschoben wird?","faq.a2":"Kein Problem. Die Begleitung ist flexibel und anpassbar. Wir bleiben auf Kurs, auch in chaotischen Situationen.","faq.q3":"Funktioniert das auch im Ausland?","faq.a3":"Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.","faq.q4":"Wird das von der Krankenkasse &uuml;bernommen?","faq.a4":"Die Begleitung ist eine Privatleistung. Manche Zusatzversicherungen k&ouml;nnen Leistungen anteilig erstatten.","faq.q5":"Was ist Resonant Tuning?","faq.a5":"Durch Summen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es schafft Ruhe, Klarheit und Erdung.","faq.q6":"Ersetzt die Begleitung meinen Arzt?","faq.a6":"Nein. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt aber keine &auml;rztliche Diagnose.","urgency.text":"Idealerweise 2–3 Wochen vor der OP buchen — begrenzte Plätze verfügbar","sticky.cta":"Kostenloses Gespr&auml;ch buchen &rarr;","trust.1":"15+ Jahre Erfahrung","trust.2":"Klassische Hom&ouml;opathin","trust.3":"100% Online &amp; Weltweit","trust.4":"Zoom &amp; Telefon","trust.5":"Yoga &amp; Meditationslehrerin","nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
       "hero.eyebrow":"Ganzheitliche Online-Begleitung","hero.tagline":"Du bist es dir wert.","hero.lead":"Ganzheitliche Begleitung vor, während und nach deiner Operation — online, fortschrittlich und sicher im eigenen Zuhause. Schulmedizin und ganzheitliche Medizin ergänzen sich für dein bestes Ergebnis.","hero.cta1":"Kostenloses Kennenlerngespräch","hero.cta2":"Pakete entdecken","hero.badge1":"100 % online","hero.badge2":"Per Zoom oder Telefon","scroll.hint":"Scroll",
       "about.card1":"Jahre klinische OP- &amp; Intensiv-Erfahrung","about.card2":"Jahre klassische Homöopathie","about.card3":"Yoga &amp; Meditation","about.card4":"Individuell — kein Schema F","about.eyebrow":"Über mich","about.title":"Ich bin Nadine Hurler.","about.lead":"47 Jahre, verheiratet, Mutter von drei Kindern — und seit über 15 Jahren zwischen zwei Welten zuhause.","about.p1":"Examinierte Krankenschwester und diplomierte Operationspflegefachfrau mit langjähriger praktischer Erfahrung in unterschiedlichsten operativen Gebieten und auf der Intensivstation.","about.p2":"Mit 32 Jahren habe ich klassische Homöopathie studiert und berate seitdem Menschen in diesem Bereich. Als Yoga- und Meditationslehrerin unterstütze ich Klienten in ihrem Prozess der Gesundheitsprophylaxe und Erhaltung — online, fortschrittlich und sicher im eigenen Zuhause.","about.motto":"&bdquo;Schulmedizin und ganzheitliche Medizin schließen sich nicht aus — sie ergänzen sich für das Beste eines jeden Menschen. Das lebe ich und gebe es mit voller Überzeugung weiter.",
       "passion.eyebrow":"Meine Leidenschaft","passion.title":"Begleitung mit Tiefe — auf jeder Ebene.","passion.p1":"Basierend auf meinen fachlichen Kenntnissen aus Schulmedizin und Alternativmedizin berate und begleite ich dich vor, während und nach einer Operation. Ich nehme mir die Zeit zur individuellen Unterstützung, um deine mentale, emotionale und physische Genesung zu ermöglichen — und somit beste Operationsergebnisse zu erzielen.","passion.p2":"Meine <strong>HOLISTIC&nbsp;CARE&nbsp;PAKETE</strong> richten sich an Klienten, die eine Basisbegleitung wünschen, bis hin zu intensiver Unterstützung. In meiner Tätigkeit bin ich beratend und ganzheitlich unterstützend tätig — individuell auf jeden Menschen zugeschnitten.","passion.highlight":"&bdquo;Ich nehme mir die Zeit, die im Krankenhaus oft nicht vorhanden ist.&rdquo;",
@@ -1626,7 +1673,7 @@ const I18N = {
       "modal.legal":"Rechtliches","imp.title":"Impressum","dp.title":"Datenschutz"
     },
     en: {
-      "nav.faq":"FAQ","resonant.desc":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged by aligning heartbeat, breath and brainwaves into one coherent vibration. Like striking a tuning fork for your entire system.","faq.eyebrow":"Frequently Asked Questions","faq.title":"Your questions answered.","faq.sub":"Everything you want to know before we start.","faq.q1":"How far in advance should I book?","faq.a1":"Optimally 2 weeks before medium surgeries and 3 weeks before major procedures. Last-minute bookings are possible for medium surgeries after a personal phone evaluation.","faq.q2":"What happens if my surgery is postponed?","faq.a2":"No problem. The care is flexible and adaptable. We stay on course together, even in chaotic situations.","faq.q3":"Does it work if I am abroad?","faq.a3":"Yes, absolutely. Since the care is mainly online, it works everywhere in the world.","faq.q4":"Is this covered by health insurance?","faq.a4":"The care is a private service. Some supplementary insurances may partially reimburse preventive health services.","faq.q5":"What is Resonant Tuning?","faq.a5":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged. Like striking a tuning fork for your entire system, it releases tension and creates calm, clarity and grounding.","faq.q6":"Does the care replace my doctor?","faq.a6":"No. My care complements conventional medical treatment but does not replace a medical diagnosis or therapy.","urgency.text":"Ideally book 2–3 weeks before surgery — limited spots available","nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
+      "nav.faq":"FAQ","resonant.desc":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged by aligning heartbeat, breath and brainwaves into one coherent vibration. Like striking a tuning fork for your entire system.","faq.eyebrow":"Frequently Asked Questions","faq.title":"Your questions answered.","faq.sub":"Everything you want to know before we start.","faq.q1":"How far in advance should I book?","faq.a1":"Optimally 2 weeks before medium surgeries and 3 weeks before major procedures. Last-minute bookings are possible for medium surgeries after a personal phone evaluation.","faq.q2":"What happens if my surgery is postponed?","faq.a2":"No problem. The care is flexible and adaptable. We stay on course together, even in chaotic situations.","faq.q3":"Does it work if I am abroad?","faq.a3":"Yes, absolutely. Since the care is mainly online, it works everywhere in the world.","faq.q4":"Is this covered by health insurance?","faq.a4":"The care is a private service. Some supplementary insurances may partially reimburse preventive health services.","faq.q5":"What is Resonant Tuning?","faq.a5":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged. Like striking a tuning fork for your entire system, it releases tension and creates calm, clarity and grounding.","faq.q6":"Does the care replace my doctor?","faq.a6":"No. My care complements conventional medical treatment but does not replace a medical diagnosis or therapy.","urgency.text":"Ideally book 2–3 weeks before surgery — limited spots available","sticky.cta":"Book free consultation &rarr;","trust.1":"15+ years experience","trust.2":"Classical Homeopath","trust.3":"100% Online &amp; Worldwide","trust.4":"Zoom &amp; Phone","trust.5":"Yoga &amp; Meditation Teacher","nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
       "hero.eyebrow":"Holistic online care","hero.tagline":"You are worth it.","hero.lead":"Holistic care before, during and after your operation — online, forward-thinking and safe from your own home. Conventional and holistic medicine complement each other for your best outcome.","hero.cta1":"Free discovery call","hero.cta2":"Explore packages","hero.badge1":"100% online","hero.badge2":"Via Zoom or phone","scroll.hint":"Scroll",
       "about.card1":"Years of clinical OR &amp; ICU experience","about.card2":"Years of classical homeopathy","about.card3":"Yoga &amp; meditation","about.card4":"Individual — no one-size-fits-all","about.eyebrow":"About me","about.title":"I'm Nadine Hurler.","about.lead":"47 years old, married, mother of three — at home between two worlds for more than 15 years.","about.p1":"Registered nurse and certified operating-room nursing specialist with many years of hands-on experience in a wide range of surgical fields and on the intensive care unit.","about.p2":"At 32, I studied classical homeopathy and have been advising people in this field ever since. As a yoga and meditation teacher, I support clients in their journey of health prevention and well-being — online, forward-thinking and safe from their own home.","about.motto":"&ldquo;Conventional and holistic medicine are not mutually exclusive — they complement each other for the best of every person. I live by this and share it with full conviction.&rdquo;",
       "passion.eyebrow":"My passion","passion.title":"Care with depth — on every level.","passion.p1":"Drawing on my expertise in both conventional and complementary medicine, I advise and support you before, during and after surgery. I take the time for individual support to enable your mental, emotional and physical recovery — and achieve the best possible surgical outcomes.","passion.p2":"My <strong>HOLISTIC&nbsp;CARE&nbsp;PACKAGES</strong> are designed for clients who want basic care all the way up to intensive support. My work is advisory and holistically supportive — individually tailored to each person.","passion.highlight":"&ldquo;I take the time that hospitals often cannot.&rdquo;",
@@ -1712,6 +1759,19 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModals(); });
 });
 </script>
+
+
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/491774795161" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+</a>
+
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta">
+  <a href="https://calendly.com/nadinehurler" target="_blank" rel="noopener" data-i18n="sticky.cta">Kostenloses Gespr&auml;ch buchen &rarr;</a>
+</div>
 
 
 </body>
