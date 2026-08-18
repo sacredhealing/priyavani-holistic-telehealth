@@ -601,6 +601,23 @@
   .t-tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.12);color:rgba(250,246,239,.8);padding:.3rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
   @media(max-width:980px){.t-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
 
+
+  /* ---------- RESONANT TUNING BOX ---------- */
+  .resonant-box{background:var(--linen);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:20px 0 24px}
+  .resonant-box .rtag{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .resonant-box p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--linen)}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .faq-item{background:#fff;border-radius:var(--r);border:1px solid var(--line);overflow:hidden;transition:.25s}
+  .faq-item:hover{box-shadow:var(--shadow)}
+  .faq-q{width:100%;background:none;border:0;text-align:left;padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:inherit;font-size:.93rem;font-weight:600;color:var(--ink)}
+  .faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--sage-soft);color:var(--sage-deep);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .3s,background .3s}
+  .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--sage-deep);color:#fff}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 22px;font-size:.88rem;color:var(--ink-soft);line-height:1.72}
+  .faq-item.open .faq-a{max-height:300px;padding-bottom:18px}
+  @media(max-width:980px){.faq-grid{grid-template-columns:1fr}}
 </style>
 
 <!-- ============== STRUCTURED DATA (JSON-LD / Schema.org) ============== -->
@@ -889,6 +906,7 @@
       <a href="#packages" data-i18n="nav.packages">Pakete</a>
       <a href="#testimonials" data-i18n="nav.testimonials">Stimmen</a>
       <a href="#circle" data-i18n="nav.circle">Coaching</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
       <div class="lang" role="group" aria-label="Sprache / Language">
         <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
@@ -1203,6 +1221,10 @@
         <div class="pkg-duration" data-i18n="pkg3.duration">Begleitung 4 bis 5 Wochen</div>
         <ul>
           <li data-i18n="pkg3.li1">Alles aus dem Extra-Paket — auf höchster Ebene</li>
+          <div class="resonant-box">
+            <div class="rtag">Was ist Resonant Tuning?</div>
+            <p data-i18n="resonant.desc">Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen kommen in eine koh&auml;rente Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.</p>
+          </div>
           <li data-i18n="pkg3.li2">„Resonant Tuning" zum Erden &amp; Stabilisieren</li>
           <li data-i18n="pkg3.li3">Tönen des Lautes, der dem zu operierenden Organ entspricht</li>
           <li data-i18n="pkg3.li4">Energetische Fernheilung an den 3 Abenden vor der OP</li>
@@ -1298,6 +1320,62 @@
             <div class="desc" data-i18n="circle.p3.desc">5 Sessions à 60 Min.</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FAQ ========== -->
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="faq.eyebrow">H&auml;ufige Fragen</span>
+      <h2 data-i18n="faq.title">Deine Fragen beantwortet.</h2>
+      <p data-i18n="faq.sub">Alles was du wissen m&ouml;chtest, bevor wir starten.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q1">Wie fr&uuml;hzeitig sollte ich buchen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a1">Optimal 2 Wochen vor mittleren Operationen (Knochen, Auge, Hernie, plastische Chirurgie, HNO, Hand, Fu&szlig;, Haut, Biopsie) und 3 Wochen vor gro&szlig;en Eingriffen (Krebs, Darm, innere Organe). Kurzfristige Buchungen sind bei mittleren OPs nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q2">Was passiert, wenn meine OP verschoben wird?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a2">Kein Problem. Die Begleitung ist online, flexibel und anpassbar. Wir bleiben gemeinsam auf Kurs, auch in chaotischen Situationen. Genau darum bieten wir diesen Service in dieser Form an.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q3">Funktioniert das auch im Ausland?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a3">Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q4">Wird das von der Krankenkasse &uuml;bernommen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a4">Die Begleitung ist eine Privatleistung. Manche private Zusatzversicherungen k&ouml;nnen Leistungen im Bereich Pr&auml;vention anteilig erstatten.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q5">Was ist Resonant Tuning?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a5">Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es l&ouml;st Spannungen, balanciert das Nervensystem und schafft Ruhe, Klarheit und Erdung.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq.q6">Ersetzt die Begleitung meinen Arzt?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" data-i18n="faq.a6">Nein. Ich bin ausschlie&szlig;lich beratend und begleitend t&auml;tig. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt jedoch keine &auml;rztliche Diagnose oder Therapie.</div>
       </div>
     </div>
   </div>
@@ -1509,7 +1587,7 @@
 <script>
 const I18N = {
     de: {
-      "nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
+      "nav.faq":"FAQ","resonant.desc":"Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen in koh&auml;renter Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.","faq.eyebrow":"H&auml;ufige Fragen","faq.title":"Deine Fragen beantwortet.","faq.sub":"Alles was du wissen m&ouml;chtest, bevor wir starten.","faq.q1":"Wie fr&uuml;hzeitig sollte ich buchen?","faq.a1":"Optimal 2 Wochen vor mittleren Operationen und 3 Wochen vor gro&szlig;en Eingriffen. Kurzfristige Buchungen sind nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.","faq.q2":"Was passiert, wenn meine OP verschoben wird?","faq.a2":"Kein Problem. Die Begleitung ist flexibel und anpassbar. Wir bleiben auf Kurs, auch in chaotischen Situationen.","faq.q3":"Funktioniert das auch im Ausland?","faq.a3":"Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.","faq.q4":"Wird das von der Krankenkasse &uuml;bernommen?","faq.a4":"Die Begleitung ist eine Privatleistung. Manche Zusatzversicherungen k&ouml;nnen Leistungen anteilig erstatten.","faq.q5":"Was ist Resonant Tuning?","faq.a5":"Durch Summen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es schafft Ruhe, Klarheit und Erdung.","faq.q6":"Ersetzt die Begleitung meinen Arzt?","faq.a6":"Nein. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt aber keine &auml;rztliche Diagnose.","nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
       "hero.eyebrow":"Ganzheitliche Online-Begleitung","hero.tagline":"Du bist es dir wert.","hero.lead":"Ganzheitliche Begleitung vor, während und nach deiner Operation — online, fortschrittlich und sicher im eigenen Zuhause. Schulmedizin und ganzheitliche Medizin ergänzen sich für dein bestes Ergebnis.","hero.cta1":"Kostenloses Kennenlerngespräch","hero.cta2":"Pakete entdecken","hero.badge1":"100 % online","hero.badge2":"Per Zoom oder Telefon","scroll.hint":"Scroll",
       "about.card1":"Jahre klinische OP- &amp; Intensiv-Erfahrung","about.card2":"Jahre klassische Homöopathie","about.card3":"Yoga &amp; Meditation","about.card4":"Individuell — kein Schema F","about.eyebrow":"Über mich","about.title":"Ich bin Nadine Hurler.","about.lead":"47 Jahre, verheiratet, Mutter von drei Kindern — und seit über 15 Jahren zwischen zwei Welten zuhause.","about.p1":"Examinierte Krankenschwester und diplomierte Operationspflegefachfrau mit langjähriger praktischer Erfahrung in unterschiedlichsten operativen Gebieten und auf der Intensivstation.","about.p2":"Mit 32 Jahren habe ich klassische Homöopathie studiert und berate seitdem Menschen in diesem Bereich. Als Yoga- und Meditationslehrerin unterstütze ich Klienten in ihrem Prozess der Gesundheitsprophylaxe und Erhaltung — online, fortschrittlich und sicher im eigenen Zuhause.","about.motto":"&bdquo;Schulmedizin und ganzheitliche Medizin schließen sich nicht aus — sie ergänzen sich für das Beste eines jeden Menschen. Das lebe ich und gebe es mit voller Überzeugung weiter.",
       "passion.eyebrow":"Meine Leidenschaft","passion.title":"Begleitung mit Tiefe — auf jeder Ebene.","passion.p1":"Basierend auf meinen fachlichen Kenntnissen aus Schulmedizin und Alternativmedizin berate und begleite ich dich vor, während und nach einer Operation. Ich nehme mir die Zeit zur individuellen Unterstützung, um deine mentale, emotionale und physische Genesung zu ermöglichen — und somit beste Operationsergebnisse zu erzielen.","passion.p2":"Meine <strong>HOLISTIC&nbsp;CARE&nbsp;PAKETE</strong> richten sich an Klienten, die eine Basisbegleitung wünschen, bis hin zu intensiver Unterstützung. In meiner Tätigkeit bin ich beratend und ganzheitlich unterstützend tätig — individuell auf jeden Menschen zugeschnitten.","passion.highlight":"&bdquo;Ich nehme mir die Zeit, die im Krankenhaus oft nicht vorhanden ist.&rdquo;",
@@ -1538,7 +1616,7 @@ const I18N = {
       "modal.legal":"Rechtliches","imp.title":"Impressum","dp.title":"Datenschutz"
     },
     en: {
-      "nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
+      "nav.faq":"FAQ","resonant.desc":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged by aligning heartbeat, breath and brainwaves into one coherent vibration. Like striking a tuning fork for your entire system.","faq.eyebrow":"Frequently Asked Questions","faq.title":"Your questions answered.","faq.sub":"Everything you want to know before we start.","faq.q1":"How far in advance should I book?","faq.a1":"Optimally 2 weeks before medium surgeries and 3 weeks before major procedures. Last-minute bookings are possible for medium surgeries after a personal phone evaluation.","faq.q2":"What happens if my surgery is postponed?","faq.a2":"No problem. The care is flexible and adaptable. We stay on course together, even in chaotic situations.","faq.q3":"Does it work if I am abroad?","faq.a3":"Yes, absolutely. Since the care is mainly online, it works everywhere in the world.","faq.q4":"Is this covered by health insurance?","faq.a4":"The care is a private service. Some supplementary insurances may partially reimburse preventive health services.","faq.q5":"What is Resonant Tuning?","faq.a5":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged. Like striking a tuning fork for your entire system, it releases tension and creates calm, clarity and grounding.","faq.q6":"Does the care replace my doctor?","faq.a6":"No. My care complements conventional medical treatment but does not replace a medical diagnosis or therapy.","nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
       "hero.eyebrow":"Holistic online care","hero.tagline":"You are worth it.","hero.lead":"Holistic care before, during and after your operation — online, forward-thinking and safe from your own home. Conventional and holistic medicine complement each other for your best outcome.","hero.cta1":"Free discovery call","hero.cta2":"Explore packages","hero.badge1":"100% online","hero.badge2":"Via Zoom or phone","scroll.hint":"Scroll",
       "about.card1":"Years of clinical OR &amp; ICU experience","about.card2":"Years of classical homeopathy","about.card3":"Yoga &amp; meditation","about.card4":"Individual — no one-size-fits-all","about.eyebrow":"About me","about.title":"I'm Nadine Hurler.","about.lead":"47 years old, married, mother of three — at home between two worlds for more than 15 years.","about.p1":"Registered nurse and certified operating-room nursing specialist with many years of hands-on experience in a wide range of surgical fields and on the intensive care unit.","about.p2":"At 32, I studied classical homeopathy and have been advising people in this field ever since. As a yoga and meditation teacher, I support clients in their journey of health prevention and well-being — online, forward-thinking and safe from their own home.","about.motto":"&ldquo;Conventional and holistic medicine are not mutually exclusive — they complement each other for the best of every person. I live by this and share it with full conviction.&rdquo;",
       "passion.eyebrow":"My passion","passion.title":"Care with depth — on every level.","passion.p1":"Drawing on my expertise in both conventional and complementary medicine, I advise and support you before, during and after surgery. I take the time for individual support to enable your mental, emotional and physical recovery — and achieve the best possible surgical outcomes.","passion.p2":"My <strong>HOLISTIC&nbsp;CARE&nbsp;PACKAGES</strong> are designed for clients who want basic care all the way up to intensive support. My work is advisory and holistically supportive — individually tailored to each person.","passion.highlight":"&ldquo;I take the time that hospitals often cannot.&rdquo;",
@@ -1567,6 +1645,11 @@ const I18N = {
       "modal.legal":"Legal","imp.title":"Legal notice","dp.title":"Privacy policy"
     }
   };
+
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  item.classList.toggle('open');
+}
 
 function setLang(lang) {
   if (!I18N[lang]) lang = 'de';
