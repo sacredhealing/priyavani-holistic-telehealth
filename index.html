@@ -934,7 +934,7 @@
 }
 </script>
 </head>
-<body id="top">
+<body>
 
 
 <!-- ========== HEADER ========== -->
@@ -1806,7 +1806,7 @@ function toggleFaq(btn) {
   item.classList.toggle('open');
 }
 
-function setLang(lang) {
+window.setLang = function setLang(lang) {
   if (!I18N[lang]) lang = 'de';
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
