@@ -639,6 +639,29 @@
   .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:var(--sage-deep);padding:12px 20px;text-align:center}
   .sticky-cta a{color:#fff;font-weight:700;font-size:.95rem;text-decoration:none}
   @media(max-width:980px){.sticky-cta{display:block}}
+
+  /* ---------- PATIENT JOURNEY ---------- */
+  .journey{background:linear-gradient(180deg,var(--cream) 0%,var(--sage-soft) 100%)}
+  .journey-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:48px}
+  .journey-steps::before{content:'';position:absolute;top:32px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--sage-soft),var(--sage-deep),var(--sage-soft));z-index:0}
+  .journey-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+  .journey-icon{width:64px;height:64px;border-radius:50%;background:#fff;border:2px solid var(--sage-deep);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.6rem;box-shadow:0 4px 16px rgba(95,112,88,.15)}
+  .journey-phase{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:6px}
+  .journey-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .journey-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.6}
+  .journey-before-after{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;max-width:840px;margin-left:auto;margin-right:auto}
+  .journey-state{border-radius:var(--r);padding:28px 32px}
+  .journey-state.before{background:rgba(42,41,37,.04);border:1px solid var(--line)}
+  .journey-state.after{background:var(--sage-soft);border:1px solid rgba(95,112,88,.2)}
+  .journey-state-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+  .journey-state.before .journey-state-label{color:var(--muted)}
+  .journey-state.after .journey-state-label{color:var(--sage-deep)}
+  .journey-state ul{list-style:none}
+  .journey-state li{font-size:.9rem;color:var(--ink-soft);padding:6px 0;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(42,41,37,.06)}
+  .journey-state li:last-child{border-bottom:0}
+  .journey-state.before li::before{content:'→';color:var(--muted);font-size:.9rem}
+  .journey-state.after li::before{content:'✓';color:var(--sage-deep);font-weight:700}
+  @media(max-width:980px){.journey-steps{grid-template-columns:1fr 1fr;gap:32px}.journey-steps::before{display:none}.journey-before-after{grid-template-columns:1fr}}
 </style>
 
 <!-- ============== STRUCTURED DATA (JSON-LD / Schema.org) ============== -->
@@ -923,6 +946,7 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#about" data-i18n="nav.about">Über mich</a>
+      <a href="#journey" data-i18n="nav.journey">Ablauf</a>
       <a href="#benefits" data-i18n="nav.benefits">Vorteile</a>
       <a href="#packages" data-i18n="nav.packages">Pakete</a>
       <a href="#testimonials" data-i18n="nav.testimonials">Stimmen</a>
@@ -1001,15 +1025,15 @@
     <div class="reveal">
       <div class="about-card-grid">
         <div class="about-card">
-          <div class="num">15+</div>
+          <div class="num" data-count="15" data-suffix="+">15+</div>
           <div class="label" data-i18n="about.card1">Jahre klinische OP- &amp; Intensiv-Erfahrung</div>
         </div>
         <div class="about-card">
-          <div class="num">15</div>
+          <div class="num" data-count="15">15</div>
           <div class="label" data-i18n="about.card2">Jahre klassische Homöopathie</div>
         </div>
         <div class="about-card">
-          <div class="num">∞</div>
+          <div class="num" data-count="inf">∞</div>
           <div class="label" data-i18n="about.card3">Yoga &amp; Meditation</div>
         </div>
         <div class="about-card">
@@ -1064,6 +1088,64 @@
       individuell auf jeden Menschen zugeschnitten.
     </p>
     <p class="highlight" data-i18n="passion.highlight">„Ich nehme mir die Zeit, die im Krankenhaus oft nicht vorhanden ist."</p>
+  </div>
+</section>
+
+
+<!-- ========== PATIENT JOURNEY ========== -->
+<section class="section journey" id="journey">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="journey.eyebrow">Dein Weg mit mir</span>
+      <h2 data-i18n="journey.title">Von &Auml;ngstlich zu Erholt &mdash; Schritt f&uuml;r Schritt.</h2>
+      <p data-i18n="journey.sub">So sieht deine Begleitung aus &mdash; von unserem ersten Gespr&auml;ch bis zu deiner vollst&auml;ndigen Genesung.</p>
+    </div>
+    <div class="journey-steps reveal">
+      <div class="journey-step">
+        <div class="journey-icon">&#128222;</div>
+        <div class="journey-phase" data-i18n="journey.p1.phase">Woche 1-2 vor OP</div>
+        <div class="journey-title" data-i18n="journey.p1.title">Erstes Gespr&auml;ch</div>
+        <div class="journey-desc" data-i18n="journey.p1.desc">Kennenlernen, Anamnese, Erkl&auml;rung des OP-Verfahrens, individuelle Planung</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">&#127775;</div>
+        <div class="journey-phase" data-i18n="journey.p2.phase">Tage vor der OP</div>
+        <div class="journey-title" data-i18n="journey.p2.title">Vorbereitung</div>
+        <div class="journey-desc" data-i18n="journey.p2.desc">Meditationen, Atemübungen, Hom&ouml;opathie, positive Affirmationen, mentale St&auml;rkung</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">&#128137;</div>
+        <div class="journey-phase" data-i18n="journey.p3.phase">Tag der OP</div>
+        <div class="journey-title" data-i18n="journey.p3.title">Begleitung</div>
+        <div class="journey-desc" data-i18n="journey.p3.desc">Du gehst vorbereitet, ruhig und geerdet in den Eingriff &mdash; nicht allein</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon">&#127807;</div>
+        <div class="journey-phase" data-i18n="journey.p4.phase">Nach der OP</div>
+        <div class="journey-title" data-i18n="journey.p4.title">Genesung</div>
+        <div class="journey-desc" data-i18n="journey.p4.desc">Wundheilung, Verdauung, Energie &mdash; schneller wieder auf den Beinen</div>
+      </div>
+    </div>
+    <div class="journey-before-after reveal">
+      <div class="journey-state before">
+        <div class="journey-state-label" data-i18n="journey.before">Ohne Begleitung</div>
+        <ul>
+          <li data-i18n="journey.b1">Angst und Unsicherheit vor der OP</li>
+          <li data-i18n="journey.b2">Keine Zeit f&uuml;r Fragen im Krankenhaus</li>
+          <li data-i18n="journey.b3">Allein mit der Diagnose</li>
+          <li data-i18n="journey.b4">Langsame oder schwierige Genesung</li>
+        </ul>
+      </div>
+      <div class="journey-state after">
+        <div class="journey-state-label" data-i18n="journey.after">Mit Nadines Begleitung</div>
+        <ul>
+          <li data-i18n="journey.a1">Ruhe und Vertrauen vor dem Eingriff</li>
+          <li data-i18n="journey.a2">Alle Fragen beantwortet, alles erkl&auml;rt</li>
+          <li data-i18n="journey.a3">Individuell begleitet auf jedem Schritt</li>
+          <li data-i18n="journey.a4">Schnellere Genesung, fr&uuml;her nach Hause</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1617,7 +1699,7 @@
 <script>
 const I18N = {
     de: {
-      "nav.faq":"FAQ","resonant.desc":"Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen in koh&auml;renter Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.","faq.eyebrow":"H&auml;ufige Fragen","faq.title":"Deine Fragen beantwortet.","faq.sub":"Alles was du wissen m&ouml;chtest, bevor wir starten.","faq.q1":"Wie fr&uuml;hzeitig sollte ich buchen?","faq.a1":"Optimal 2 Wochen vor mittleren Operationen und 3 Wochen vor gro&szlig;en Eingriffen. Kurzfristige Buchungen sind nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.","faq.q2":"Was passiert, wenn meine OP verschoben wird?","faq.a2":"Kein Problem. Die Begleitung ist flexibel und anpassbar. Wir bleiben auf Kurs, auch in chaotischen Situationen.","faq.q3":"Funktioniert das auch im Ausland?","faq.a3":"Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.","faq.q4":"Wird das von der Krankenkasse &uuml;bernommen?","faq.a4":"Die Begleitung ist eine Privatleistung. Manche Zusatzversicherungen k&ouml;nnen Leistungen anteilig erstatten.","faq.q5":"Was ist Resonant Tuning?","faq.a5":"Durch Summen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es schafft Ruhe, Klarheit und Erdung.","faq.q6":"Ersetzt die Begleitung meinen Arzt?","faq.a6":"Nein. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt aber keine &auml;rztliche Diagnose.","urgency.text":"Idealerweise 2–3 Wochen vor der OP buchen — begrenzte Plätze verfügbar","trust.1":"15+ Jahre Erfahrung","trust.2":"Klassische Hom&ouml;opathin","trust.3":"Weltweit &amp; Online","trust.4":"Zoom &amp; Telefon","trust.5":"Yoga &amp; Meditationslehrerin","sticky.cta":"Kostenloses Gespr&auml;ch buchen &rarr;","contact.cta.title":"Termin direkt buchen","contact.cta.p":"W&auml;hle deinen Wunschtermin f&uuml;r ein kostenloses 15-min&uuml;tiges Kennenlerngespräch &mdash; direkt in meinem Kalender.","nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
+      "nav.faq":"FAQ","resonant.desc":"Durch Summen und Stimmen spezifischer T&ouml;ne wird das Energiefeld des K&ouml;rpers aufgeladen &mdash; Herzschlag, Atem und Gehirnwellen in koh&auml;renter Schwingung. Wie das Anschlagen einer Stimmgabel f&uuml;r dein gesamtes System.","faq.eyebrow":"H&auml;ufige Fragen","faq.title":"Deine Fragen beantwortet.","faq.sub":"Alles was du wissen m&ouml;chtest, bevor wir starten.","faq.q1":"Wie fr&uuml;hzeitig sollte ich buchen?","faq.a1":"Optimal 2 Wochen vor mittleren Operationen und 3 Wochen vor gro&szlig;en Eingriffen. Kurzfristige Buchungen sind nach pers&ouml;nlichem Gespr&auml;ch m&ouml;glich.","faq.q2":"Was passiert, wenn meine OP verschoben wird?","faq.a2":"Kein Problem. Die Begleitung ist flexibel und anpassbar. Wir bleiben auf Kurs, auch in chaotischen Situationen.","faq.q3":"Funktioniert das auch im Ausland?","faq.a3":"Ja, absolut. Die Begleitung findet haupts&auml;chlich online statt und funktioniert &uuml;berall auf der Welt.","faq.q4":"Wird das von der Krankenkasse &uuml;bernommen?","faq.a4":"Die Begleitung ist eine Privatleistung. Manche Zusatzversicherungen k&ouml;nnen Leistungen anteilig erstatten.","faq.q5":"Was ist Resonant Tuning?","faq.a5":"Durch Summen spezifischer T&ouml;ne wird das Energiefeld aufgeladen. Wie eine Stimmgabel f&uuml;r dein System &mdash; es schafft Ruhe, Klarheit und Erdung.","faq.q6":"Ersetzt die Begleitung meinen Arzt?","faq.a6":"Nein. Meine Begleitung erg&auml;nzt die schulmedizinische Behandlung, ersetzt aber keine &auml;rztliche Diagnose.","urgency.text":"Idealerweise 2–3 Wochen vor der OP buchen — begrenzte Plätze verfügbar","trust.1":"15+ Jahre Erfahrung","trust.2":"Klassische Hom&ouml;opathin","trust.3":"Weltweit &amp; Online","trust.4":"Zoom &amp; Telefon","trust.5":"Yoga &amp; Meditationslehrerin","sticky.cta":"Kostenloses Gespr&auml;ch buchen &rarr;","contact.cta.title":"Termin direkt buchen","contact.cta.p":"W&auml;hle deinen Wunschtermin f&uuml;r ein kostenloses 15-min&uuml;tiges Kennenlerngespräch &mdash; direkt in meinem Kalender.","journey.eyebrow":"Dein Weg mit mir","journey.title":"Von &Auml;ngstlich zu Erholt &mdash; Schritt f&uuml;r Schritt.","journey.sub":"So sieht deine Begleitung aus &mdash; von unserem ersten Gespr&auml;ch bis zu deiner vollst&auml;ndigen Genesung.","journey.p1.phase":"Woche 1-2 vor OP","journey.p1.title":"Erstes Gespr&auml;ch","journey.p1.desc":"Kennenlernen, Anamnese, Erkl&auml;rung des OP-Verfahrens, individuelle Planung","journey.p2.phase":"Tage vor der OP","journey.p2.title":"Vorbereitung","journey.p2.desc":"Meditationen, Atemübungen, Hom&ouml;opathie, positive Affirmationen, mentale St&auml;rkung","journey.p3.phase":"Tag der OP","journey.p3.title":"Begleitung","journey.p3.desc":"Du gehst vorbereitet, ruhig und geerdet in den Eingriff &mdash; nicht allein","journey.p4.phase":"Nach der OP","journey.p4.title":"Genesung","journey.p4.desc":"Wundheilung, Verdauung, Energie &mdash; schneller wieder auf den Beinen","journey.before":"Ohne Begleitung","journey.b1":"Angst und Unsicherheit vor der OP","journey.b2":"Keine Zeit f&uuml;r Fragen im Krankenhaus","journey.b3":"Allein mit der Diagnose","journey.b4":"Langsame oder schwierige Genesung","journey.after":"Mit Nadines Begleitung","journey.a1":"Ruhe und Vertrauen vor dem Eingriff","journey.a2":"Alle Fragen beantwortet, alles erkl&auml;rt","journey.a3":"Individuell begleitet auf jedem Schritt","journey.a4":"Schnellere Genesung, fr&uuml;her nach Hause","nav.journey":"Ablauf","nav.about":"Über mich","nav.benefits":"Vorteile","nav.packages":"Pakete","nav.testimonials":"Stimmen","nav.circle":"Coaching","nav.contact":"Kontakt",
       "hero.eyebrow":"Ganzheitliche Online-Begleitung","hero.tagline":"Du bist es dir wert.","hero.lead":"Ganzheitliche Begleitung vor, während und nach deiner Operation — online, fortschrittlich und sicher im eigenen Zuhause. Schulmedizin und ganzheitliche Medizin ergänzen sich für dein bestes Ergebnis.","hero.cta1":"Kostenloses Kennenlerngespräch","hero.cta2":"Pakete entdecken","hero.badge1":"100 % online","hero.badge2":"Per Zoom oder Telefon","scroll.hint":"Scroll",
       "about.card1":"Jahre klinische OP- &amp; Intensiv-Erfahrung","about.card2":"Jahre klassische Homöopathie","about.card3":"Yoga &amp; Meditation","about.card4":"Individuell — kein Schema F","about.eyebrow":"Über mich","about.title":"Ich bin Nadine Hurler.","about.lead":"47 Jahre, verheiratet, Mutter von drei Kindern — und seit über 15 Jahren zwischen zwei Welten zuhause.","about.p1":"Examinierte Krankenschwester und diplomierte Operationspflegefachfrau mit langjähriger praktischer Erfahrung in unterschiedlichsten operativen Gebieten und auf der Intensivstation.","about.p2":"Mit 32 Jahren habe ich klassische Homöopathie studiert und berate seitdem Menschen in diesem Bereich. Als Yoga- und Meditationslehrerin unterstütze ich Klienten in ihrem Prozess der Gesundheitsprophylaxe und Erhaltung — online, fortschrittlich und sicher im eigenen Zuhause.","about.motto":"&bdquo;Schulmedizin und ganzheitliche Medizin schließen sich nicht aus — sie ergänzen sich für das Beste eines jeden Menschen. Das lebe ich und gebe es mit voller Überzeugung weiter.",
       "passion.eyebrow":"Meine Leidenschaft","passion.title":"Begleitung mit Tiefe — auf jeder Ebene.","passion.p1":"Basierend auf meinen fachlichen Kenntnissen aus Schulmedizin und Alternativmedizin berate und begleite ich dich vor, während und nach einer Operation. Ich nehme mir die Zeit zur individuellen Unterstützung, um deine mentale, emotionale und physische Genesung zu ermöglichen — und somit beste Operationsergebnisse zu erzielen.","passion.p2":"Meine <strong>HOLISTIC&nbsp;CARE&nbsp;PAKETE</strong> richten sich an Klienten, die eine Basisbegleitung wünschen, bis hin zu intensiver Unterstützung. In meiner Tätigkeit bin ich beratend und ganzheitlich unterstützend tätig — individuell auf jeden Menschen zugeschnitten.","passion.highlight":"&bdquo;Ich nehme mir die Zeit, die im Krankenhaus oft nicht vorhanden ist.&rdquo;",
@@ -1646,7 +1728,7 @@ const I18N = {
       "modal.legal":"Rechtliches","imp.title":"Impressum","dp.title":"Datenschutz"
     },
     en: {
-      "nav.faq":"FAQ","resonant.desc":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged by aligning heartbeat, breath and brainwaves into one coherent vibration. Like striking a tuning fork for your entire system.","faq.eyebrow":"Frequently Asked Questions","faq.title":"Your questions answered.","faq.sub":"Everything you want to know before we start.","faq.q1":"How far in advance should I book?","faq.a1":"Optimally 2 weeks before medium surgeries and 3 weeks before major procedures. Last-minute bookings are possible for medium surgeries after a personal phone evaluation.","faq.q2":"What happens if my surgery is postponed?","faq.a2":"No problem. The care is flexible and adaptable. We stay on course together, even in chaotic situations.","faq.q3":"Does it work if I am abroad?","faq.a3":"Yes, absolutely. Since the care is mainly online, it works everywhere in the world.","faq.q4":"Is this covered by health insurance?","faq.a4":"The care is a private service. Some supplementary insurances may partially reimburse preventive health services.","faq.q5":"What is Resonant Tuning?","faq.a5":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged. Like striking a tuning fork for your entire system, it releases tension and creates calm, clarity and grounding.","faq.q6":"Does the care replace my doctor?","faq.a6":"No. My care complements conventional medical treatment but does not replace a medical diagnosis or therapy.","urgency.text":"Ideally book 2–3 weeks before surgery — limited spots available","trust.1":"15+ Years Experience","trust.2":"Classical Homeopath","trust.3":"Worldwide &amp; Online","trust.4":"Zoom &amp; Phone","trust.5":"Yoga &amp; Meditation Teacher","sticky.cta":"Book free consultation &rarr;","contact.cta.title":"Book directly","contact.cta.p":"Choose your preferred time for a free 15-minute discovery call &mdash; directly in my calendar.","nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
+      "nav.faq":"FAQ","resonant.desc":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged by aligning heartbeat, breath and brainwaves into one coherent vibration. Like striking a tuning fork for your entire system.","faq.eyebrow":"Frequently Asked Questions","faq.title":"Your questions answered.","faq.sub":"Everything you want to know before we start.","faq.q1":"How far in advance should I book?","faq.a1":"Optimally 2 weeks before medium surgeries and 3 weeks before major procedures. Last-minute bookings are possible for medium surgeries after a personal phone evaluation.","faq.q2":"What happens if my surgery is postponed?","faq.a2":"No problem. The care is flexible and adaptable. We stay on course together, even in chaotic situations.","faq.q3":"Does it work if I am abroad?","faq.a3":"Yes, absolutely. Since the care is mainly online, it works everywhere in the world.","faq.q4":"Is this covered by health insurance?","faq.a4":"The care is a private service. Some supplementary insurances may partially reimburse preventive health services.","faq.q5":"What is Resonant Tuning?","faq.a5":"Through humming and toning specific sounds, the body&rsquo;s energy field gets charged. Like striking a tuning fork for your entire system, it releases tension and creates calm, clarity and grounding.","faq.q6":"Does the care replace my doctor?","faq.a6":"No. My care complements conventional medical treatment but does not replace a medical diagnosis or therapy.","urgency.text":"Ideally book 2–3 weeks before surgery — limited spots available","trust.1":"15+ Years Experience","trust.2":"Classical Homeopath","trust.3":"Worldwide &amp; Online","trust.4":"Zoom &amp; Phone","trust.5":"Yoga &amp; Meditation Teacher","sticky.cta":"Book free consultation &rarr;","contact.cta.title":"Book directly","contact.cta.p":"Choose your preferred time for a free 15-minute discovery call &mdash; directly in my calendar.","journey.eyebrow":"Your path with me","journey.title":"From Anxious to Recovered &mdash; Step by Step.","journey.sub":"This is what your care looks like &mdash; from our first call to your full recovery.","journey.p1.phase":"1-2 weeks before surgery","journey.p1.title":"First consultation","journey.p1.desc":"Getting to know each other, medical history, explanation of the procedure, individual planning","journey.p2.phase":"Days before surgery","journey.p2.title":"Preparation","journey.p2.desc":"Meditations, breathing exercises, homeopathy, positive affirmations, mental strengthening","journey.p3.phase":"Day of surgery","journey.p3.title":"Accompaniment","journey.p3.desc":"You go into surgery prepared, calm and grounded &mdash; not alone","journey.p4.phase":"After surgery","journey.p4.title":"Recovery","journey.p4.desc":"Wound healing, digestion, energy &mdash; back on your feet faster","journey.before":"Without care","journey.b1":"Fear and uncertainty before surgery","journey.b2":"No time for questions at the hospital","journey.b3":"Alone with the diagnosis","journey.b4":"Slow or difficult recovery","journey.after":"With Nadine&rsquo;s care","journey.a1":"Calm and confidence before the procedure","journey.a2":"All questions answered, everything explained","journey.a3":"Individually supported at every step","journey.a4":"Faster recovery, home sooner","nav.journey":"Process","nav.about":"About","nav.benefits":"Benefits","nav.packages":"Packages","nav.testimonials":"Testimonials","nav.circle":"Coaching","nav.contact":"Contact",
       "hero.eyebrow":"Holistic online care","hero.tagline":"You are worth it.","hero.lead":"Holistic care before, during and after your operation — online, forward-thinking and safe from your own home. Conventional and holistic medicine complement each other for your best outcome.","hero.cta1":"Free discovery call","hero.cta2":"Explore packages","hero.badge1":"100% online","hero.badge2":"Via Zoom or phone","scroll.hint":"Scroll",
       "about.card1":"Years of clinical OR &amp; ICU experience","about.card2":"Years of classical homeopathy","about.card3":"Yoga &amp; meditation","about.card4":"Individual — no one-size-fits-all","about.eyebrow":"About me","about.title":"I'm Nadine Hurler.","about.lead":"47 years old, married, mother of three — at home between two worlds for more than 15 years.","about.p1":"Registered nurse and certified operating-room nursing specialist with many years of hands-on experience in a wide range of surgical fields and on the intensive care unit.","about.p2":"At 32, I studied classical homeopathy and have been advising people in this field ever since. As a yoga and meditation teacher, I support clients in their journey of health prevention and well-being — online, forward-thinking and safe from their own home.","about.motto":"&ldquo;Conventional and holistic medicine are not mutually exclusive — they complement each other for the best of every person. I live by this and share it with full conviction.&rdquo;",
       "passion.eyebrow":"My passion","passion.title":"Care with depth — on every level.","passion.p1":"Drawing on my expertise in both conventional and complementary medicine, I advise and support you before, during and after surgery. I take the time for individual support to enable your mental, emotional and physical recovery — and achieve the best possible surgical outcomes.","passion.p2":"My <strong>HOLISTIC&nbsp;CARE&nbsp;PACKAGES</strong> are designed for clients who want basic care all the way up to intensive support. My work is advisory and holistically supportive — individually tailored to each person.","passion.highlight":"&ldquo;I take the time that hospitals often cannot.&rdquo;",
@@ -1675,6 +1757,45 @@ const I18N = {
       "modal.legal":"Legal","imp.title":"Legal notice","dp.title":"Privacy policy"
     }
   };
+
+
+// Animated counter
+function animateCounter(el, target, suffix) {
+  var start = 0;
+  var duration = 1800;
+  var step = duration / 60;
+  var increment = target / 60;
+  var current = 0;
+  var timer = setInterval(function() {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = (target === Infinity ? '∞' : Math.floor(current)) + (suffix || '');
+  }, step);
+}
+
+// Trigger counters when about section is visible
+var counterDone = false;
+var counterObserver = new IntersectionObserver(function(entries) {
+  if (entries[0].isIntersecting && !counterDone) {
+    counterDone = true;
+    var nums = document.querySelectorAll('.about-card .num[data-count]');
+    nums.forEach(function(el) {
+      var target = parseFloat(el.dataset.count);
+      var suffix = el.dataset.suffix || '';
+      if (el.dataset.count === 'inf') {
+        el.textContent = '∞';
+      } else {
+        animateCounter(el, target, suffix);
+      }
+    });
+  }
+}, { threshold: 0.3 });
+
+var aboutSection = document.getElementById('about');
+if (aboutSection) counterObserver.observe(aboutSection);
 
 function toggleFaq(btn) {
   var item = btn.parentElement;
